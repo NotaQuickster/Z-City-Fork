@@ -80,11 +80,12 @@ SWEP.Primary.Sound = {"zcitysnd/sound/weapons/firearms/shtg_remington870/remingt
 SWEP.SupressedSound = {"toz_shotgun/toz_suppressed_fp.wav", 65, 90, 100}
 SWEP.availableAttachments = {
 	barrel = {
-		[1] = {"supressor5", Vector(8.5,0,0), {}},
+		["mount"] = Vector(-2.5,0,0),
+		[1] = {"supressor5", Vector(0,0,0), {}},
 	},
 	sight = {
 		["mountType"] = "picatinny",
-		["mount"] = Vector(-18, 1.15, 0),
+		["mount"] = Vector(-18, 0.7, 0.1),
 	},
 }
 
