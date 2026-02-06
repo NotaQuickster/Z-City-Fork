@@ -1517,6 +1517,8 @@ function hg.TranslateToBodyTemp(temp, org)
 	return math.Remap(temp, -20, 20, 27, org and org.needed_temp or 36.7) -- math.Remap doesn't clamp
 end
 
+local hg_temperaturesystem = CreateConVar("hg_temperaturesystem", 1, FCVAR_ARCHIVE + FCVAR_REPLICATED + FCVAR_NOTIFY, "Enables/disabled temperature system", 0, 1)
+
 hook.Add("Org Think", "BodyTemperature", function(owner, org, timeValue) -- переделал систему температуры
 	if not owner:IsPlayer() or not owner:Alive() then return end
 	if owner.GetPlayerClass and owner:GetPlayerClass() and owner:GetPlayerClass().NoFreeze then return end
@@ -1542,7 +1544,7 @@ hook.Add("Org Think", "BodyTemperature", function(owner, org, timeValue) -- пе
 	if currentPulse > 80 then
 		local pulseMultiplier = math.min((currentPulse - 70) / 100, 1.2)
 		pulseHeat = timeValue / 50 * pulseMultiplier * 0.2
-	end
+	end -- unused
 
 	local warming = org.stamina.sub > 0 and 0.5 or 0
 	local ownerpos = owner:GetPos()
@@ -1562,13 +1564,17 @@ hook.Add("Org Think", "BodyTemperature", function(owner, org, timeValue) -- пе
 
 	local changeRate = timeValue / 30 -- 1 degree every 1 minute
 
-	local temp = (IsVisibleSkyBox and temp or math.max(10, temp)) + warming * 5
+	local temp = (IsVisibleSkyBox and temp or 20) + warming * 5
 
 	local isFreezing = temp < 0
 	local isHeating = temp > 30
-
+	
 	if temp < -20 then
-		changeRate = changeRate * 2
+		changeRate = changeRate * math.abs(temp) * 0.1
+	end
+
+	if temp > 25 then
+		changeRate = changeRate * 1
 	end
 
 	org.tempchanging = changeRate
