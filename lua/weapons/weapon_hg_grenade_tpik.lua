@@ -235,7 +235,7 @@ function SWEP:Throw(mul, time, nosound, throwPosAdjust, throwAngAdjust)
 	local eyetr = self:GetEyeTrace()
 	local eyepos = eyetr and eyetr.StartPos or false
 	local ang = IsValid(entOwner) and owner:EyeAngles() or self:GetAngles()
-	local hand = IsValid(entOwner) and eyepos + ang:Forward() * throwPosAdjust[1] + ang:Right() * throwPosAdjust[2] + ang:Up() * throwPosAdjust[3] or self:GetPos()
+	local hand = eyepos and eyepos + ang:Forward() * throwPosAdjust[1] + ang:Right() * throwPosAdjust[2] + ang:Up() * throwPosAdjust[3] or self:GetPos()
 
 	if IsValid(entOwner) then
 		ent:SetOwner(entOwner or game.GetWorld())

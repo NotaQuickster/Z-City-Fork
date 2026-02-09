@@ -486,14 +486,15 @@ hook.Add("PostEntityFireBullets","bulletsuppression",function(ent,bullet)
 
 		if dist > 120 then continue end
 
-		if shooterdist < 500 and !IsLookingAt(ent:GetOwner(),eyePos) then continue end
+		if shooterdist < 200 and !IsLookingAt(ent:GetOwner(),eyePos) then continue end
 
 		if ent:GetOwner():IsPlayer() then
 			hg.DynaMusic:AddPanic(ent:GetOwner(),0.5)
 		end
 
 		if !org.otrub then
-			ent:AddNaturalAdrenaline(0.05 * dmg / math.max(dist / 2,10) / 1)
+			--print(1 * dmg / math.max(dist / 2,10) / 1)
+			ply:AddNaturalAdrenaline(0.05 * dmg / math.max(dist / 2,10) / 1)
 			org.fearadd = org.fearadd + 0.2
 		end
 	end
@@ -1052,7 +1053,7 @@ if util.IsBinaryModuleInstalled("eightbit") then
 	require("eightbit")
 
 	if eightbit.SetDamp1 then
-		eightbit.SetDamp1(0.96)
+		eightbit.SetDamp1(0.85)
 	end
 
 	if eightbit.SetProotCutoff then
