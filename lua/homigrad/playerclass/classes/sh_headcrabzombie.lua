@@ -409,6 +409,7 @@ else
 
 				ang:RotateAroundAxis(ang:Up(), -90)
 				ang:RotateAroundAxis(ang:Forward(), 100)
+
 				mdl:SetRenderOrigin(view.origin + ang:Forward() * vecAdjust.x + ang:Right() * vecAdjust.y + ang:Up() * vecAdjust.z)
 				mdl:SetRenderAngles(ang)
 				mdl2:SetRenderOrigin(view.origin + ang:Forward() * vecAdjust.x + ang:Right() * vecAdjust.y + ang:Up() * vecAdjust.z)
@@ -451,10 +452,8 @@ else
 	end
 
 	hook.Add("Post Pre Post Processing", "ZombDrawHeadcrab", function()
-		if lply.PlayerClassName == "headcrabzombie" and lply:Alive() then
-			cam.IgnoreZ(true)
-				DrawHeadcrab(lply, "models/nova/w_headcrab.mdl", vector_origin, -50)
-			cam.IgnoreZ(false)
+		if lply.PlayerClassName == "headcrabzombie" and lply:Alive() and lply.organism and not lply.organism.otrub then
+			DrawHeadcrab(lply, "models/nova/w_headcrab.mdl", vector_origin, -50)
 		end
 	end)
 
