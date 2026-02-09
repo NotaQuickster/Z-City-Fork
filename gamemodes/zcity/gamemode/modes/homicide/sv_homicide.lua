@@ -1013,6 +1013,9 @@ function MODE:SpawnForce(teamtype, count)
     return spawned
 end
 
+local function tbl_Random(tbl) -- when you can't even say
+	return tbl[math.random(#tbl)] -- my name
+end
 function MODE:EquipSWAT(ply, index)
     ply:SetPlayerClass("swat")
     
@@ -1749,7 +1752,7 @@ hook.Add("PlayerSpawn", "HMCD_UpdateTraitorsList", function(ply)
 			if IsValid(main_traitor) and main_traitor.isTraitor and main_traitor.MainTraitor then
 				local traitor_assistants = {}
 				
-				for _, other_ply in ipairs(player.GetAll()) do
+				for _, other_ply in player.Iterator() do
 					if other_ply.isTraitor then
 						local Appearance = other_ply.CurAppearance
 						if Appearance then
@@ -1790,11 +1793,11 @@ hook.Add("PlayerDeath", "HMCD_UpdateTraitorsList", function(ply)
 		end
 		
 		timer.Simple(0.4, function()
-			for _, main_traitor in ipairs(player.GetAll()) do
+			for _, main_traitor in player.Iterator() do
 				if IsValid(main_traitor) and main_traitor.isTraitor and main_traitor.MainTraitor then
 					local traitor_assistants = {}
 					
-					for _, other_ply in ipairs(player.GetAll()) do
+					for _, other_ply in player.Iterator() do
 						if other_ply.isTraitor then
 							local Appearance = other_ply.CurAppearance
 							if Appearance then
