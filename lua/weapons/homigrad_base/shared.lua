@@ -1980,7 +1980,7 @@ function SWEP:SetHandPos(noset)
 			hg.bone_apply_matrix(ent, rh, rhmat)
 			--ent:SetBoneMatrix(rh, rhmat)
 			
-			if GetViewEntity() == self:GetOwner() then hg.set_holdrh(ent, self.hold_type or (self:IsPistolHoldType() and "pistol_hold2" or "ak_hold")) end
+			hg.set_holdrh(ent, self.hold_type or (self:IsPistolHoldType() and "pistol_hold2" or "ak_hold"))
 		end
 		
 		if (( hg.CanUseLeftHand(ply) and self.lhandik )) and self.attachments and vec2 and addvec2 and ang2 then
@@ -2002,7 +2002,7 @@ function SWEP:SetHandPos(noset)
 			local hold = self.hold_type or (self:IsPistolHoldType() and "pistol_hold2" or "ak_hold")
 			hold = self.attachments.grip and #self.attachments.grip ~= 0 and hg.attachments.grip[self.attachments.grip[1]].hold or hold
 			
-			if GetViewEntity() == self:GetOwner() then hg.set_hold(ent, hold) end
+			hg.set_hold(ent, hold)
 		end
 	else
 		local wpn = self
@@ -2087,7 +2087,7 @@ function SWEP:SetHandPos(noset)
 				local hold = self.hold_type or (self:IsPistolHoldType() and "pistol_hold2" or "ak_hold")
 				hold = self.attachments.grip and #self.attachments.grip ~= 0 and hg.attachments.grip[self.attachments.grip[1]].hold or hold
 
-				if GetViewEntity() == self:GetOwner() then hg.set_hold(ent, hold) end
+				hg.set_hold(ent, hold)
 			end
 		end
 	end
