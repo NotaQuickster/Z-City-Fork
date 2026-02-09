@@ -10,17 +10,17 @@ local allowedchars = {
 local audible_pain = {
 	"AAAAAGH..FUCK.. IT HURTS.",
 	"I CAN'T TAKE THIS ANYMORE!",
-    "Make it STOP make it STOP MAKE IT STOP",
-    "Why won't IT STOP",
-    "Make me unconscious. PLEASE",
-    "Why was I born to feel this why...",
-    "I'd do anything for it to stop... ANYTHING.",
-    "This isn't living this is being TORTURED",
-    "I don't care anymore just STOP the PAIN",
-    "Nothing matters EXCEPT MAKING IT STOP...",
-    "Every second is an eternity of FIRE.",
-    "DEATH WOULD BE MERCY NOW...",
-    "Just one moment without the pain..",
+  "Make it STOP make it STOP MAKE IT STOP",
+  "Why won't IT STOP",
+  "Make me unconscious. PLEASE",
+  "Why was I born to feel this why...",
+  "I'd do anything for it to stop... ANYTHING.",
+  "This isn't living this is being TORTURED",
+  "I don't care anymore just STOP the PAIN",
+  "Nothing matters EXCEPT MAKING IT STOP...",
+  "Every second is an eternity of FIRE.",
+  "DEATH WOULD BE MERCY NOW...",
+  "Just one moment without the pain..",
 	"I WISH I HAD SOME PAINKILLERS NOW. FUCK.",
 }
 
@@ -115,7 +115,7 @@ local is_aimed_at_phrases = {
 }
 
 local near_death_poetic = {
-	"Trying to stand... but I just cant...",
+	"Trying to stand... but I just can't...",
 	"Breathing's just shallow sips of nothing...",
 	"Can't tell if my eyes are open or not anymore...",
 	"Last thing I'll taste is my own blood and copper.",
@@ -146,20 +146,19 @@ local near_death_positive = {
 }
 
 local broken_limb = {
-	"FUCK. FUCK. ITS DEFINITELY BROKEN",
-	"ITS FUCKING BROKEN. I THINK..",
+	"FUCK. FUCK. ITS DEFINITELY BROKEN!",
+	"I CAN FEEL THE BONE PIECES MOVING!",
+	"IT'S FUCKING BROKEN. I THINK..",
 	"It hurts just thinking about it. Definitely broken.",
-	"Fuck... Fuck... FUCK!!! ...It did break.",
+	"I don't think it should bend here.",
 	"Oh fuck. It is snapped.",
 	"I don't see any open fracture, but I feel like I broke something",
-	"FUCK! OWWW!!! OK YEP THAT BONE DID BREAK!",
-	"Unable to fix that shit by hand... If only I could use something as a splint...",
 }
 
 local dislocated_limb = {
 	"Yeah that shouldn't be bending like that.",
 	"I have to get this bone back in.",
-	"No, I have to move it back in place.",
+	"No... I have to move it back in place.",
 	"It just hurts so much there. I might need a check up.",
 	"It's either I move it back into place or ask someone else to do it for me."
 }
@@ -168,7 +167,7 @@ local hungry_a_bit = {
     "Mgh, I'm hungry...",
     "Some food would be great...",
     "I'm hungry...",
-    "It's time to eat",
+    "I should eat something.",
 }
 
 local very_hungry = {
@@ -188,7 +187,7 @@ local after_unconscious = {
 	"Ohh-fuck... my head is aching...",
 	"Oh it's gonna be hard to get up right now... but I have to...",
 	"I don't recognize this place at all... or do I?",
-	"I don't want to experience this EVER AGAIN",
+	"I don't want to experience this EVER AGAIN!",
 }
 
 local slight_braindamage_phraselist = {
@@ -221,13 +220,14 @@ local cold_phraselist = {
 	"Too cold for me.",
 	"I'm shivering, fucking hell, man.",
 	"Extremely chilly out here..",
-	"I feel a bit cold.",
+	"Need something to heat up...",
+	"I feel pretty cold...",
 	"I feel sick from that cold, fuck."
 }
 
 local freezing_phraselist = {
 	"I.. ca.. can't feel m-my b-body..",
-	"I can't.. f-feel my legs..",
+	"I can't.. f-feel my legs...",
 	"I'm f-fuck-king fre-ezing..",
 	"I-I think-k my face is num-mb..",
 	"Cold-d..",
@@ -236,11 +236,11 @@ local freezing_phraselist = {
 
 local numb_phraselist = {
 	"It's not.. cold anymore..",
-	"Why.. does it feel warm..?",
-	"I think I'm okay.. I think...",
+	"Why... does it feel warm..?",
+	"I think I'm okay... I think...",
 	"Finally some warmth...",
 	"I'm warm again... Somehow...",
-	"I was just freezing... Where did this heat come from..?"
+	"I was just freezing... Where did this heat come from..?",
 }
 
 local hot_phraselist = {
@@ -250,13 +250,13 @@ local hot_phraselist = {
 	"My sweat fucking reeks. I should really cool down...",
 	"It's a bit too hot, fuck, man.",
 	"I'm heating up real bad...",
-	"I feel really hot right now.",
+	"Why is it so hot in here?",
 }
 
 local heatstroke_phraselist = {
 	"I NEED WATER!!",
-	"Please, water..",
-	"I feel dizzy.. Fuuck-",
+	"Please... water...",
+	"I feel dizzy... Fuuck-",
 	"MY HEAD!- It hurts..",
 	"My head is aching..",
 }
