@@ -147,8 +147,8 @@ local near_death_positive = {
 }
 
 local broken_limb = {
-	"FUCK. FUCK. ITS DEFINITELY BROKEN",
-	"I CAN FEEL THE BONE PIECES MOVING",
+	"FUCK. FUCK. ITS DEFINITELY BROKEN!",
+	"I CAN FEEL THE BONE PIECES MOVING!",
 	"IT'S FUCKING BROKEN. I THINK..",
 	"It hurts just thinking about it. Definitely broken.",
 	"I don't think it should bend here.",
@@ -159,7 +159,7 @@ local broken_limb = {
 local dislocated_limb = {
 	"Yeah that shouldn't be bending like that.",
 	"I have to get this bone back in.",
-	"No, I have to move it back in place.",
+	"No... I have to move it back in place.",
 	"It just hurts so much there. I might need a check up.",
 	"My limb is out of place.",
 }
@@ -237,8 +237,8 @@ local freezing_phraselist = {
 
 local numb_phraselist = {
 	"It's not.. cold anymore..",
-	"Why.. does it feel warm..?",
-	"I think I'm okay.. I think...",
+	"Why... does it feel warm..?",
+	"I think I'm okay... I think...",
 	"Finally some warmth...",
 	"I'm warm again... Somehow...",
 	"I was just freezing... Where did this heat come from..?",
@@ -256,8 +256,8 @@ local hot_phraselist = {
 
 local heatstroke_phraselist = {
 	"I NEED WATER!!",
-	"Please, water..",
-	"I feel dizzy.. Fuuck-",
+	"Please... water...",
+	"I feel dizzy... Fuuck-",
 	"MY HEAD!- It hurts..",
 	"My head is aching..",
 }
