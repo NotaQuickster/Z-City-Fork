@@ -245,8 +245,9 @@ function CLASS.On(self, data)
 
     self.subClass = nil
 
-    zb.GiveRole(self, "Rebel", Color(0, 173, 43))
-
+    if zb and zb.GiveRole then
+        zb.GiveRole(self, "Rebel", Color(0, 173, 43))
+    end
 
     self:SetBodygroup(10, 1)                  
     self:SetBodygroup(8, math.random(0,15))   
