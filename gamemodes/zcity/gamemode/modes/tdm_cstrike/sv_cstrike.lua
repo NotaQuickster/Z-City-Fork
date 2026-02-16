@@ -9,7 +9,6 @@ MODE.Rounds = 5
 MODE.ROUND_TIME = 240
 
 util.AddNetworkString("zb_cs_round_intermission")
--- util.AddNetworkString("zb_cs_round_over") -- хотлайн армяне
 
 function MODE:DontKillPlayer(ply)
     return zb.RoundsLeft and (zb.RoundsLeft != self.Rounds)
@@ -60,6 +59,12 @@ function MODE:Intermission()
         zb.nextcsround = nil
     end
 
+    if !zb.rtype then
+        zb.rtype = (
+            (#zb.GetMapPoints( "BOMB_ZONE_A" ) > 0 or #zb.GetMapPoints( "BOMB_ZONE_B" ) > 0) and  "bomb") or 
+            (zb.hostagepoints and #zb.hostagepoints > 0 and "hostage")
+    end
+
     zb.SendSpecificPointsToPly(nil, "BOMB_ZONE_A", false)
     zb.SendSpecificPointsToPly(nil, "BOMB_ZONE_B", false)
     zb.SendSpecificPointsToPly(nil, "HOSTAGE_DELIVERY_ZONE", false)
@@ -100,7 +105,6 @@ function MODE:Intermission()
             local ply = team_t[math.random(#team_t)]
 			--ent:SetModel("models/humans/group01/"..(math.random(2) == 1 and "fe" or "").."male_0"..math.random(9)..".mdl")
             ent:SetModel("models/player/hostage/hostage_0"..math.random(4)..".mdl")
-            ApplyAppearance(ent)
             ent:SetPos(ply:GetPos())
             ent:Spawn()
             ent:SetCollisionGroup(COLLISION_GROUP_WEAPON)
@@ -195,20 +199,25 @@ function MODE:EndRound()
         end
     elseif zb.rtype == "hostage" then
         if not IsValid(zb.hostage) then
-            winner = 0
+            winner = 3
+            
+            if IsValid(zb.hostageLastTouched) then
+                winner = zb.hostageLastTouched:Team() == 0 and 1 or 0
+            end
         end
         
         if IsValid(zb.hostage) and not zb.hostage.organism.alive then
-            local max, maxPly = 0
-            if zb.HarmDone[zb.hostage] then
-                for ply, harm in pairs(zb.HarmDone[zb.hostage]) do
-                    if harm > max then
-                        max = harm
-                        maxPly = ply
+            local max, maxTeam = 0
+            if zb.HarmDoneDetailed[zb.hostage:EntIndex()] then
+                for steamid, tbl in pairs(zb.HarmDoneDetailed[zb.hostage:EntIndex()]) do
+                    if tbl.harm > max then
+                        max = tbl.harm
+                        maxTeam = tbl.teamAttacker
                     end
                 end
                 
-                winner = maxPly:Team() == 0 and 1 or 0
+                winner = maxTeam == 0 and 1 or 0
+                PrintMessage(HUD_PRINTTALK, (maxTeam == 0 and "Terrorists" or "Counter-Terrorists") .. " have killed the hostage")
             else
                 winner = 3
             end
@@ -231,8 +240,6 @@ function MODE:EndRound()
     local winnerprt = (winner == 1 and "Counter-Terrorists") or (winner == 0 and "Terrorists") or "Nobody"
     
     PrintMessage(HUD_PRINTTALK, winnerprt.." have won the round.")
-    -- net.Start("zb_cs_round_over")
-    -- net.Broadcast()
 
 	for k,ply in player.Iterator() do
 		if ply:Team() == winner then
